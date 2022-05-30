@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Cars List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Users table</h1>
+<br/><br/>
+<div>
+    <!--suppress HtmlDeprecatedAttribute -->
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>age</th>
+            <th>email</th>
+        </tr>
+
+        <tr th:each="user : ${users}">
+            <td th:utext="${user.id}">...</td>
+            <td th:utext="${user.firstname}">...</td>
+            <td th:utext="${user.lastname}">...</td>
+            <td th:utext="${user.age}">...</td>
+            <td th:utext="${user.email}">...</td>
+            <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
+            <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>
+        </tr>
+    </table>
+    <p><a href="/users-add">Create user</a></p>
+</div>
+</body>
+</html>
