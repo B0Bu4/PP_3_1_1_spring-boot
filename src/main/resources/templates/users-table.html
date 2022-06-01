@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<title>Cars List</title>
+<html lang="en" xmlns:form="http://www.w3.org/1999/html">
+<title>Table of users</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
@@ -23,11 +23,25 @@
             <td th:utext="${user.lastname}">...</td>
             <td th:utext="${user.age}">...</td>
             <td th:utext="${user.email}">...</td>
-            <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
-            <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>
+            <td>
+                <form th:action="@{user-update/{id}(id=${user.id})}">
+                    <input type="submit" value="EDIT"/>
+                </form>
+            </td>
+            <td>
+                <form th:method="delete" th:action="@{/users/{id}(id=${user.id})}">
+                    <input type="submit" value="DELETE"/>
+                </form>
+
+            </td>
         </tr>
     </table>
-    <p><a href="/users-add">Create user</a></p>
+
+    <br/><br/>
+
+    <form th:action="@{/users-add}">
+        <input type="submit" value="Create user">
+    </form>
 </div>
 </body>
 </html>
